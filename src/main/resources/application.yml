@@ -1,0 +1,64 @@
+# ===================================================================
+# String Boot Common Config
+# ===================================================================
+
+spring:
+  profiles:
+    active: local
+  banner:
+    location: classpath:static/banner.txt
+    
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    
+management:
+  endpoints:
+    web:      base-path: /zlgoon-monitoring
+      exposure:
+        include: "*"
+
+
+# ===================================================================
+# String Boot Local Config
+# ===================================================================    
+---
+spring:
+  profiles: local
+  main:
+    banner-mode: console
+  datasource:
+    hikari:
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      url: jdbc:log4jdbc:mysql://35.167.66.35:3306/hosuk1?characterEncoding=UTF-8&serverTimezone=UTC
+      username: hosuk1
+      password: "!@zlgoon#$"
+  
+# ===================================================================
+# String Boot Development Config
+# ===================================================================    
+---
+spring:
+  profiles: dev
+  main:
+    banner-mode: log
+  datasource:
+    hikari:
+      url: jdbc:mysql://35.167.66.35:3306/hosuk1?characterEncoding=UTF-8&serverTimezone=UTC
+      username: hosuk1
+      password: "!@zlgoon#$"    
+  
+# ===================================================================
+# String Boot Production Config
+# ===================================================================
+---
+spring:
+  profiles: prod
+  main:
+    banner-mode: log
+  datasource:
+    hikari:
+      url: jdbc:mysql://35.167.66.35:3306/hosuk1?characterEncoding=UTF-8&serverTimezone=UTC
+      username: hosuk1
+      password: "!@zlgoon#$"     

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.zlgoon.scheduler.repository.SchedulerRepository">
+
+    <select id="getZlgoonSchedulerList" resultType="SchedulerVo">
+        SELECT * FROM TB_ZLGOON_SCHEDULER
+    </select>
+    
+    
+   	<select id="getZlgoonSchedulerBySchedulerName" resultType="SchedulerVo">
+        SELECT * FROM TB_ZLGOON_SCHEDULER WHERE SCHEDULER_NAME = #{schedulerName}
+    </select>
+    
+    
+    <update id="updateRunningStatusBySchedulerName" parameterType="SchedulerVo">
+    	UPDATE 
+    		TB_ZLGOON_SCHEDULER
+    	SET
+    		JOB_STATUS = #{jobStatus}
+    	WHERE
+    		SCHEDULER_NAME = #{schedulerName}
+    </update>
+    
+    <update id="updateRunningInfoBySchedulerName" parameterType="SchedulerVo">
+        UPDATE 
+    		TB_ZLGOON_SCHEDULER
+    	SET
+    		  RUNNING_STATUS = #{runningStatus}
+    		
+    		<if test="runningTime != null and runningTime != 0">
+    			, RUNNING_TIME = #{runningTime}
+    		</if>
+    		
+    		<if test="lastExeDate != null and !lastExeDate.equals('')">
+    			, LAST_EXE_DATE = NOW()
+    		</if>
+    		
+    	WHERE
+    		SCHEDULER_NAME = #{schedulerName}
+    </update>
+
+</mapper>
