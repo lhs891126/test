@@ -33,6 +33,10 @@ public class JobController {
 			result = schedulerManagerService.stopScheduler(schedulerName);
 			log.debug("Aaaaaaaaaaaaaaaaa");
 			log.debug("Aaaaaaaaaaaaaaaaa");
+
+
+
+			log.debug("이건 마스터");
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			
