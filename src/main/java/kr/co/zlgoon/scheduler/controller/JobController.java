@@ -34,9 +34,8 @@ public class JobController {
 			log.debug("Aaaaaaaaaaaaaaaaa");
 			log.debug("Aaaaaaaaaaaaaaaaa");
 
-
-
 			log.debug("이건 마스터");
+			log.debug("이건 브런치 따서 한거다");
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			
